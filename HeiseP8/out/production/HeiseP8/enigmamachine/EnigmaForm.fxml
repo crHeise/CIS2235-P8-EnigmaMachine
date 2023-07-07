@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="enigmamachine.EnigmaFormController">
+    <children>
+        <MenuBar>
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#onActionOpenFile" text="Open File" />
+                        <MenuItem mnemonicParsing="false" onAction="#onActionSaveFile" text="Save File" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="About">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#onActionAbout" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <Label layoutX="30.0" layoutY="38.0" text="Welcome to the Enigma Encoding and Decoding Machine!">
+            <font>
+                <Font name="Arial Black" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="14.0" layoutY="60.0" prefHeight="130.0" prefWidth="235.0" text="To Encode:&#10;1) Enter your message below&#10;2) Select key and Enigma Type&#10;3) Press the Encode button&#10;4) Save by selecting File -&gt; Save File" wrapText="true">
+            <font>
+                <Font name="Arial" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="293.0" layoutY="60.0" prefHeight="130.0" prefWidth="193.0" text="To Decode:&#10;1) Select File -&gt; Open File&#10;2) Browse and select your file to read the coded message&#10;3) Press the Decode button" wrapText="true">
+            <font>
+                <Font name="Arial" size="14.0" />
+            </font>
+        </Label>
+        <RadioButton fx:id="rbRandomKey" layoutX="14.0" layoutY="202.0" mnemonicParsing="false" onAction="#onActionRBGroup1" selected="true" text="Use an Enigma-Generated Key">
+            <font>
+                <Font size="14.0" />
+            </font>
+            <toggleGroup>
+                <ToggleGroup fx:id="radioGroup1" />
+            </toggleGroup>
+         <tooltip>
+            <Tooltip text="Check this to use a random key to encode" />
+         </tooltip>
+        </RadioButton>
+        <RadioButton fx:id="rbChooseKey" layoutX="14.0" layoutY="227.0" mnemonicParsing="false" onAction="#onActionRBGroup1" text="Choose a Key (1 - 50):" toggleGroup="$radioGroup1">
+            <font>
+                <Font size="14.0" />
+            </font>
+         <tooltip>
+            <Tooltip text="Check this to pick the key to encode with" />
+         </tooltip>
+        </RadioButton>
+        <TextField fx:id="tfKey" editable="false" layoutX="177.0" layoutY="223.0" prefHeight="28.0" prefWidth="94.0" promptText="Enter Key" visible="false">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </TextField>
+        <TextArea fx:id="taStartMessage" layoutX="14.0" layoutY="259.0" prefHeight="49.0" prefWidth="258.0" promptText="Enter Message to be Encoded Here" wrapText="true">
+            <font>
+                <Font size="14.0" />
+            </font>
+         <tooltip>
+            <Tooltip text="The message you want to encode" />
+         </tooltip>
+        </TextArea>
+        <Button fx:id="btnDecode" layoutX="318.0" layoutY="235.0" mnemonicParsing="false" onAction="#onActionDecode" prefHeight="49.0" prefWidth="101.0" text="Decode">
+            <font>
+                <Font name="Arial Black" size="14.0" />
+            </font>
+         <tooltip>
+            <Tooltip text="Press to decode a message loaded from a file" />
+         </tooltip>
+        </Button>
+        <Button fx:id="btnEncode" layoutX="170.0" layoutY="348.0" mnemonicParsing="false" onAction="#onActionEncode" prefHeight="49.0" prefWidth="101.0" text="Encode">
+            <font>
+                <Font name="Arial Black" size="14.0" />
+            </font>
+         <tooltip>
+            <Tooltip text="Press to encode a message" />
+         </tooltip>
+        </Button>
+        <Button fx:id="btnClear" layoutX="318.0" layoutY="348.0" mnemonicParsing="false" onAction="#onActionClear" prefHeight="49.0" prefWidth="101.0" text="Clear">
+            <font>
+                <Font name="Arial Black" size="14.0" />
+            </font>
+         <tooltip>
+            <Tooltip text="Press to reset this form" />
+         </tooltip>
+        </Button>
+        <Label layoutX="127.0" layoutY="428.0" text="&lt;= Secret Message Summary =&gt;">
+            <font>
+                <Font name="Arial Black" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="54.0" layoutY="462.0" text="Message:">
+            <font>
+                <Font name="Arial" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="10.0" layoutY="497.0" text="Coded Message:">
+            <font>
+                <Font name="Arial" size="14.0" />
+            </font>
+        </Label>
+        <TextField fx:id="tfCodedMessage" editable="false" layoutX="123.0" layoutY="491.0" prefHeight="28.0" prefWidth="367.0">
+            <font>
+                <Font size="14.0" />
+            </font>
+         <tooltip>
+            <Tooltip text="The message after encoding" />
+         </tooltip>
+        </TextField>
+        <TextField fx:id="tfMessage" editable="false" layoutX="123.0" layoutY="456.0" prefHeight="28.0" prefWidth="367.0">
+            <font>
+                <Font size="14.0" />
+            </font>
+         <tooltip>
+            <Tooltip text="The message before encoding or after decoding" />
+         </tooltip>
+        </TextField>
+        <Label layoutX="52.0" layoutY="537.0" text="Key Used:">
+            <font>
+                <Font name="Arial" size="14.0" />
+            </font>
+        </Label>
+        <TextField fx:id="tfKeyUsed" editable="false" layoutX="123.0" layoutY="531.0" prefHeight="28.0" prefWidth="101.0">
+            <font>
+                <Font size="14.0" />
+            </font>
+         <tooltip>
+            <Tooltip text="The key that was used to encode the message" />
+         </tooltip>
+        </TextField>
+        <Label layoutX="20.0" layoutY="315.0" text="Enigma Type:">
+            <font>
+                <Font name="Arial" size="14.0" />
+            </font>
+        </Label>
+        <RadioButton fx:id="rbGEnigma" layoutX="18.0" layoutY="339.0" mnemonicParsing="false" selected="true" text="G Enigma">
+            <font>
+                <Font size="14.0" />
+            </font>
+            <toggleGroup>
+                <ToggleGroup fx:id="radioGroup2" />
+            </toggleGroup>
+         <tooltip>
+            <Tooltip text="G Enigma style encoding" />
+         </tooltip>
+        </RadioButton>
+        <RadioButton fx:id="rbPrimes" layoutX="18.0" layoutY="363.0" mnemonicParsing="false" text="Primes Enigma" toggleGroup="$radioGroup2">
+            <font>
+                <Font size="14.0" />
+            </font>
+         <tooltip>
+            <Tooltip text="Primes Enigma style encoding" />
+         </tooltip>
+        </RadioButton>
+        <RadioButton fx:id="rbHighlander" layoutX="18.0" layoutY="388.0" mnemonicParsing="false" text="Highlander Enigma" toggleGroup="$radioGroup2">
+            <font>
+                <Font size="14.0" />
+            </font>
+         <tooltip>
+            <Tooltip text="Highlander Enigma style encoding" />
+         </tooltip>
+        </RadioButton>
+        <Label layoutX="229.0" layoutY="537.0" text="Enigma Type:">
+            <font>
+                <Font name="Arial" size="14.0" />
+            </font>
+        </Label>
+        <TextField fx:id="tfEnigmaType" editable="false" layoutX="322.0" layoutY="532.0" prefHeight="27.0" prefWidth="168.0">
+            <font>
+                <Font name="Arial" size="14.0" />
+            </font>
+         <tooltip>
+            <Tooltip text="The type of Enigma encoding used" />
+         </tooltip>
+        </TextField>
+    </children>
+</AnchorPane>
